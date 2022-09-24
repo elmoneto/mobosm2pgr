@@ -31,8 +31,8 @@ Como usar:
 1) Crie um banco no PostgreSQL com o nome de sua preferência.
 2) Garanta que você está com as extensões PostGIS e pgRouting instaladas nas versões testadas:
 ```
-SELECT postgis_full_version();
-SELECT * from pgr_full_version();
+CREATE EXTENSION postgis;
+CREATE EXTENSION pgrouting;
 ```
 3) Edite o arquivo .env com as configurações do seu banco e com SRID apropriado para a cidade escolhida
 4) Execute o arquivo ExtrairSistemaViario.py
