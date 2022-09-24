@@ -1,4 +1,4 @@
-# OSMBUS2PGR
+# osmbus2pgr
 
 ## Ferramenta escrita em [Python](https://python.org) para importação de rede viária e rotas de ônibus de uma cidade a partir de dados do [OpenStreetMap](https://openstreetmap.org) para o banco de dados [PostgreSQL](https://www.postgresql.org/) com as extensões [PostGIS](https://postgis.net) e [pgRouting](https://pgrouting.org). 
 
@@ -26,3 +26,20 @@ Dependências:
 - [requests](https://pypi.org/project/requests/)
 - [psycopg2](https://pypi.org/project/psycopg2/)
 - [dotenv](https://pypi.org/project/dotenv/)
+
+Como usar:
+1) Crie um banco no PostgreSQL com o nome de sua preferência.
+2) Garanta que você está com as extensões PostGIS e pgRouting instaladas nas versões testadas:
+```
+SELECT postgis_full_version();
+SELECT * from pgr_full_version();
+```
+3) Edite o arquivo .env com as configurações do seu banco e com SRID apropriado para a cidade escolhida
+4) Execute o arquivo ExtrairSistemaViario.py
+```
+python3 ExtrairSistemaVIario.py
+```
+5) Execute o arquivo ExtrairRotas.py
+```
+python3 ExtrairRotas.py
+```
