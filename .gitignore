@@ -1,0 +1,13 @@
+venv
+./venv
+venv/
+\venv
+
+.env
+
+cache
+./cache
+cache/
+\cache
+
+*.json
