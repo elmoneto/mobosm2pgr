@@ -16,18 +16,18 @@
 * Cria tabelas rotas, rotas_vias e rotas_paradas no banco
 * Faz o preenchimento das tabelas a partir do processamento dos dados obtidos do OpenStreetMap
 
-Testado com:
+## Testado com:
 - Python 3.9.2
 - PostgreSQL 14
 - PostGIS 3.2.2
 - pgRouting 3.3.0
 
-Dependências:
+## Dependências:
 - [requests](https://pypi.org/project/requests/)
 - [psycopg2](https://pypi.org/project/psycopg2/)
 - [dotenv](https://pypi.org/project/dotenv/)
 
-Como usar:
+## Como usar:
 1) Crie um banco no PostgreSQL com o nome de sua preferência.
 2) Garanta que você está com as extensões PostGIS e pgRouting instaladas nas versões testadas:
 ```
@@ -43,3 +43,18 @@ python3 ExtrairSistemaVIario.py
 ```
 python3 ExtrairRotas.py
 ```
+## Como consultar informações sobre rotas?
+### Quais as rotas foram importadas?
+```
+select * from rotas;
+```
+
+### Qual o trajeto de uma rota específica?
+```
+SELECT rotas_vias.sequencia, vias.osmid, ST_LineMerge(ST_Union(vias.geom))
+FROM rotas JOIN rotas_vias ON rotas.osmid_rota = rotas_vias.osmid_rota JOIN vias ON rotas_vias.osmid_via = vias.osmid 
+WHERE nome_rota ilike '%circular - bairro%'
+GROUP BY rotas_vias.sequencia, vias.osmid 
+ORDER BY rotas_vias.sequencia
+```
+(É possível visualizar a geometria no mapa embutido do pgAdmin ou do dBeaver, ou executando a consulta dentro do QGIS)
