@@ -2,7 +2,7 @@
 
 Ferramenta desenvolvida com [Python](https://python.org) para importação de rede viária e rotas de ônibus de uma cidade a partir de dados do [OpenStreetMap](https://openstreetmap.org) para o banco de dados [PostgreSQL](https://www.postgresql.org/) com as extensões [PostGIS](https://postgis.net) e [pgRouting](https://pgrouting.org). 
 
-Baseada no trabalho final da disciplina de Programação de Computadores Aplicada a Transportes do Programam, ministrada pelo professor [Alexandre Hering Coelho](https://ahcoelho.paginas.ufsc.br/) no Programa de Pós-Graduação em Engenharia de Transpotes e Gestão Territoral [(PPGTG)](https://ppgtg.ufsc.br) da Universidade Federal de Santa Catarina [(UFSC)](https://ufsc.br). 
+Baseada no trabalho final da disciplina de Programação de Computadores Aplicada a Transportes do Programam, ministrada pelo professor [Alexandre Hering Coelho](https://ahcoelho.paginas.ufsc.br/) no Programa de Pós-Graduação em Engenharia de Transpotes e Gestão Territoral ([PPGTG](https://ppgtg.ufsc.br)) da Universidade Federal de Santa Catarina ([UFSC](https://ufsc.br)). 
 
 ### Extração de Sistema Viário
 * Busca no [Nominatim](https://nominatim.openstreetmap.org/) a cidade informada pelo usuário
