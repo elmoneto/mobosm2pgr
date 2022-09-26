@@ -1,6 +1,8 @@
 # osmbus2pgr
 
-Ferramenta escrita em [Python](https://python.org) para importação de rede viária e rotas de ônibus de uma cidade a partir de dados do [OpenStreetMap](https://openstreetmap.org) para o banco de dados [PostgreSQL](https://www.postgresql.org/) com as extensões [PostGIS](https://postgis.net) e [pgRouting](https://pgrouting.org). 
+Ferramenta desenvolvida com [Python](https://python.org) para importação de rede viária e rotas de ônibus de uma cidade a partir de dados do [OpenStreetMap](https://openstreetmap.org) para o banco de dados [PostgreSQL](https://www.postgresql.org/) com as extensões [PostGIS](https://postgis.net) e [pgRouting](https://pgrouting.org). 
+
+Baseada no trabalho final da disciplina de Programação de Computadores Aplicada a Transportes do Programam, ministrada pelo professor [Alexandre Hering Coelho](https://ahcoelho.paginas.ufsc.br/) no [Programa de Pós-Graduação em Engenharia de Transpotes e Gestão Territoral](https://ppgtg.ufsc.br) da [Universidade Federal de Santa Catarina](https://ufsc.br) 
 
 ### Extração de Sistema Viário
 * Busca no [Nominatim](https://nominatim.openstreetmap.org/) a cidade informada pelo usuário
@@ -37,7 +39,7 @@ CREATE EXTENSION pgrouting;
 3) Edite o arquivo .env com as configurações do seu banco e com SRID apropriado para a cidade escolhida
 4) Execute o arquivo ExtrairSistemaViario.py
 ```
-python3 ExtrairSistemaVIario.py
+python3 ExtrairSistemaViario.py
 ```
 5) Execute o arquivo ExtrairRotas.py
 ```
