@@ -56,7 +56,7 @@ for resultado in resultados:
 
 opcao = int(input("Informe o número da opção desejada: "))
 
-query_string = '[out:json];area(3600'+str(resultados[opcao]['osm_id'])+')->.searchArea;(way["highway"~"motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|residential|unclassified"](area.searchArea););out body geom;'
+query_string = '[out:json];area(3600'+str(resultados[opcao]['osm_id'])+')->.searchArea;(way["highway"~"motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|residential|service|living_street|busway|road|unclassified"](area.searchArea););out body geom;'
 #api.query(query_string)
 #print(query_string)
 
