@@ -1,4 +1,4 @@
-# osmbus2pgr
+# mobosm2pgr
 
 Ferramenta desenvolvida com [Python](https://python.org) para importação de rede viária e rotas de ônibus de uma cidade a partir de dados do [OpenStreetMap](https://openstreetmap.org) para o banco de dados [PostgreSQL](https://www.postgresql.org/) com as extensões [PostGIS](https://postgis.net) e [pgRouting](https://pgrouting.org). 
 
