@@ -72,7 +72,7 @@ erros = []
 
 for rota in rotas_json['elements']:
     id_rota = rota['id']
-    nome_rota = rota['tags']['name']
+    nome_rota = rota['tags']['name'] if 'name' in rota['tags'] else ''
     nome_rota = nome_rota.replace("'", "''")
     origem_rota = rota['tags']['from'] if 'from' in rota['tags'] else ''
     destino_rota = rota['tags']['to'] if 'to' in rota ['tags'] else ''
@@ -158,13 +158,16 @@ for parada in platforms_json['elements']:
     elif parada['type']  == 'way':
         pontos = parada['geometry']
         pontos_que_compoem = []
-        for ponto in pontos:
+        for ponto in pontos: 
             pontos_que_compoem.append(f"{ponto['lon']} {ponto['lat']}")
-        pontos_que_compoem.append(pontos_que_compoem[0])
-        pontos_sep_virgula = ','.join(pontos_que_compoem)
-        pontos_text = f"POLYGON(({pontos_sep_virgula}))"
-        centroide_poligono_postgis = f"ST_Centroid(ST_SetSRID(ST_GeomFromText('{pontos_text}'), 4326))"
-        lista_paradas.append([id_parada, name, bench, shelter, centroide_poligono_postgis])
+        if(len(pontos_que_compoem) == 2): # mínimo de 3 pontos para formar um polígono
+            geometria_parada = f"ST_Centroid(ST_SetSRID(ST_GeomFromText('LINESTRING({pontos_que_compoem[0]}, {pontos_que_compoem[1]})'), 4326))"
+        else:
+            pontos_que_compoem.append(pontos_que_compoem[0])
+            pontos_sep_virgula = ','.join(pontos_que_compoem)
+            pontos_text = f"POLYGON(({pontos_sep_virgula}))"
+            geometria_parada = f"ST_Centroid(ST_SetSRID(ST_GeomFromText('{pontos_text}'), 4326))"
+        lista_paradas.append([id_parada, name, bench, shelter, geometria_parada])
 
 print(cont_erros)
 print(erros)
@@ -204,7 +207,7 @@ with conn:
         except Exception as excep:
             erros.append(excep)
             cont_erros += 1
-        reprojetar_string = f'UPDATE paradas set geom_{srid_target} = ST_Transform(geom_4326, 31981)'
+        reprojetar_string = f'UPDATE paradas set geom_{srid_target} = ST_Transform(geom_4326, {srid_target})'
         try:
             cur.execute(reprojetar_string)
         except Exception as excep:
