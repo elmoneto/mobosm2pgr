@@ -37,13 +37,13 @@ CREATE EXTENSION postgis;
 CREATE EXTENSION pgrouting;
 ```
 3) Edite o arquivo .env com as configurações do seu banco e com SRID apropriado para a cidade escolhida
-4) Execute o arquivo ExtrairSistemaViario.py
+4) Execute o arquivo ExtrairMalhaViaria.py
 ```
-python3 ExtrairSistemaViario.py
+python3 ExtrairMalhaViaria.py
 ```
-5) Execute o arquivo ExtrairRotas.py
+5) Execute o arquivo ExtrairRotasOnibus.py
 ```
-python3 ExtrairRotas.py
+python3 ExtrairRotasOnibus.py
 ```
 ## Como consultar informações sobre rotas?
 ### Quais as rotas foram importadas?
